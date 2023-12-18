@@ -4,7 +4,7 @@ console.log("Hello " + firstname +" "+ secondname)
 
 let gender = "male"
 if(gender == "male"){
-    console.log("Hello " + "Mr." + firstname +" "+ secondname)
+    console.log("Hello " + "Mr." + firstname +" "+ secondname) 
 }
 else{
     console.log("Hello " + "Mrs." + firstname +" "+ secondname)
