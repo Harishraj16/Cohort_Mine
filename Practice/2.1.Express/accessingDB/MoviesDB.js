@@ -6,8 +6,6 @@ app.use(bodyParser.json()); // Add this line to parse JSON requests
 const users = [{
   name: "Lokesh",
   movies: [{
-    good: true
-  }, {
     good: false
   }]
 }];
@@ -50,6 +48,21 @@ app.put('/', function (req, res) {
 
 //Removing all bad movies!
 app.delete('/', function (req, res){
+    if(isThereAtleastOneBadmovie()){
+        const newmovies = [];
+        for(let i=0;i<users[0].movies.length;i++){
+            if(users[0].movies[i].good){
+                newmovies.push({
+                    good: true
+                });
+            }
+        }
+        users[0].movies = newmovies;
+        res.json({msg: "Done!"});
+    } else{
+        res.status(411).json({msg: "You have no bad movies!"});
+    }
+
     const newmovies = [];
     for(let i=0;i<users[0].movies.length;i++){
         if(users[0].movies[i].good){
@@ -61,6 +74,16 @@ app.delete('/', function (req, res){
     users[0].movies = newmovies;
     res.json({msg: "Done!"});
 });
+
+function isThereAtleastOneBadmovie(){
+    let atleastOneBadmovie = false;
+    for(let i=0;i<users[0].movies.length;i++){
+        if(!users[0].movies.good){
+            atleastOneBadmovie = true;
+        }
+    }
+    return atleastOneBadmovie;
+}
 
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
