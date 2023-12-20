@@ -29,6 +29,7 @@ app.get('/', function (req, res) {
   });
 });
 
+//Add new Movies!
 app.post('/', function (req, res) {
   const isgood = req.body.isgood;
   users[0].movies.push({
@@ -39,12 +40,26 @@ app.post('/', function (req, res) {
   });
 });
 
+//Update all bad movies into good movies!
 app.put('/', function (req, res) {
-  // Implement the logic for the PUT request here
+  for(let i=0;i<users[0].movies.length;i++){
+    users[0].movies[i].good = true;
+  }
+  res.json({});
 });
 
-app.delete('/', function (req, res) {
-  // Implement the logic for the DELETE request here
+//Removing all bad movies!
+app.delete('/', function (req, res){
+    const newmovies = [];
+    for(let i=0;i<users[0].movies.length;i++){
+        if(users[0].movies[i].good){
+            newmovies.push({
+                good: true
+            })
+        }
+    }
+    users[0].movies = newmovies;
+    res.json({msg: "Done!"});
 });
 
 app.listen(3000, () => {
