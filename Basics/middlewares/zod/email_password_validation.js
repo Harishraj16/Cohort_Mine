@@ -11,6 +11,6 @@ function validateInput(obj){
 }
 
 validateInput({
-    email: "harishgmail.com",
+    email: "harish@gmail.com",
     password: "49475836"
 })
