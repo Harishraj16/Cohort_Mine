@@ -4,7 +4,7 @@
 // }
 
 // function displayResult(data){
-//     console.log("Result of the sum is: "+ data);
+//     console.log("Result of the sum is: "+  data);
 // }
 
 // function displayResultPassive(data){
