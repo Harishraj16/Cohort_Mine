@@ -16,6 +16,7 @@ let maxi=0;
 for(let i=0;i<arr.length;i++){
     if(arr[i]>maxi) maxi=arr[i];
 }
+//here the maximum number will be logged
 console.log("Largest: "+maxi)
 
 console.log("---------------------------")
